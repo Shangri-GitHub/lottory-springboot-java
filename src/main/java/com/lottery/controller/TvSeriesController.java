@@ -21,7 +21,6 @@ public class TvSeriesController {
 
     private static final Logger logger = LoggerFactory.getLogger(TvSeriesController.class);
 
-
     @GetMapping()
     public Map <String, Object> sayHello() {
         Map <String, Object> result = new HashMap <>();

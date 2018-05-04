@@ -1,6 +1,8 @@
 package com.lottery.entity;
 
 import javax.persistence.*;
+import javax.xml.crypto.Data;
+import java.util.Date;
 
 @Entity
 @Table(name = "user")
@@ -10,7 +12,15 @@ public class User {
     private long id;
     private String name;
     private String password;
+    private String date;
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 
     public long getId() {
         return id;
@@ -36,5 +46,14 @@ public class User {
         this.password = password;
     }
 
+    public User(String name, String password) {
+        this.name = name;
+        this.password = password;
+    }
 
+    public User(String name, String password, String date) {
+        this.name = name;
+        this.password = password;
+        this.date = date;
+    }
 }

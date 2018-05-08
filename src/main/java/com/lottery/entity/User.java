@@ -1,6 +1,11 @@
 package com.lottery.entity;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
+import javax.validation.constraints.AssertFalse;
+import javax.validation.constraints.AssertTrue;
+import javax.validation.constraints.NotEmpty;
 import javax.xml.crypto.Data;
 import java.util.Date;
 
@@ -11,6 +16,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
+
+    @NotEmpty(message="密码不能为空")
+    @Length(min=6,message="密码长度不能小于6位")
     private String password;
     private String date;
 
@@ -56,4 +64,6 @@ public class User {
         this.password = password;
         this.date = date;
     }
+
+
 }

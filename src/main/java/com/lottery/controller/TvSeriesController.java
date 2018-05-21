@@ -1,9 +1,13 @@
 package com.lottery.controller;
 
+import com.lottery.dao.TvSeriesDao;
+import com.lottery.entity.TvSeries;
 import com.lottery.entity.User;
+import com.lottery.service.TvSeriesService;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,12 +25,26 @@ public class TvSeriesController {
 
     private static final Logger logger = LoggerFactory.getLogger(TvSeriesController.class);
 
+
+    @Autowired
+    TvSeriesService tvSeriesService;
+
     @GetMapping()
-    public Map <String, Object> sayHello() {
-        Map <String, Object> result = new HashMap <>();
-        result.put("message", "hello,world");
-        return result;
+    public List <TvSeries> getAllTvServies() {
+        List <TvSeries> list = tvSeriesService.getAllTvServies();
+
+
+        logger.debug("查询获得" + list.size() + "条数据");
+        return list;
     }
+
+
+//    @GetMapping()
+//    public Map <String, Object> sayHello() {
+//        Map <String, Object> result = new HashMap <>();
+//        result.put("message", "hello,world");
+//        return result;
+//    }
 
 
     @RequestMapping("/tvlist")
